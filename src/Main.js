@@ -12,14 +12,17 @@ class Main extends Component {
                         <BookShelf
                             title="Currently Reading"
                             books={this.props.books.filter(book => book.shelf === 'currentlyReading')}
+                            updateShelf={this.props.updateShelf}
                         />
                         <BookShelf
                             title="Want to Read"
                             books={this.props.books.filter(book => book.shelf === 'wantToRead')}
+                            updateShelf={this.props.updateShelf}                            
                         />
                         <BookShelf
                             title="read"
-                            books={this.props.books.filter(book => book.shelf === 'read')}                            
+                            books={this.props.books.filter(book => book.shelf === 'read')}
+                            updateShelf={this.props.updateShelf}                                                   
                         />
                     </div>
                 </div>

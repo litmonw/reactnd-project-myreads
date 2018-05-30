@@ -19,8 +19,31 @@ class BooksApp extends React.Component {
       BooksAPI.getAll().then(books => this.setState({ books }))
   }
 
+  updateShelf = (book, shelf) => {
+      // 当 shelf 为 none，从书架中移除该 book
+      if (shelf === 'none') {
+          BooksAPI.update(book, shelf).then(() => {
+              book.shelf = shelf
+              let updateBooks = this.state.books.concat([book])
+              this.setState(() => ({
+                  books: updateBooks
+              }))
+          })
+      } else {
+          /* 如果 book shelf 不为 none，则更新 book 的 shelf */
+          // 根据书的 id 查找需要修改的数据索引
+          const index = this.state.books.map(book => book.id).indexOf(book.id)
+          BooksAPI.update(book, shelf).then(() => {
+              let books = this.state.books
+              // 改变 book 的 shelf 位置
+              books[index].shelf = shelf
+              this.setState({books})
+          })
+      }
+  }
+
   render() {
-    console.log(this.state.books);
+    // console.log(this.state.books);
     return (
       <div className="app">
         {this.state.showSearchPage ? (
@@ -45,7 +68,10 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-            <Main books={this.state.books} />
+            <Main
+                books={this.state.books}
+                updateShelf = {this.updateShelf}
+            />
         )}
       </div>
     )
