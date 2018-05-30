@@ -45,7 +45,7 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-            <Main book={this.state.books} />
+            <Main books={this.state.books} />
         )}
       </div>
     )
