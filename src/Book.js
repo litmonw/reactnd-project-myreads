@@ -9,11 +9,11 @@ class Book extends Component {
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.book.imageLinks.thumbnail})` }}></div>
                         <div className="book-shelf-changer">
                             <select
-                                onChange={(e => {
+                                onChange={(e) => {
                                     this.props.updateShelf(this.props.book, e.target.value)
-                                })}
-                                value={this.props.book.shelf || 'none'}>
-                                <option value="none" disabled>Move to...</option>
+                                }}
+                                value={this.props.book.shelf || "none"}>
+                                <option disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
                                 <option value="read">Read</option>

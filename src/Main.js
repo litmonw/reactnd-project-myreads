@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Header from './Header'
 import BookShelf from './BookShelf'
 class Main extends Component {
     render() {
         return (
             <div className="list-books">
-                <div className="list-books-title">
-                    <h1>MyReads</h1>
-                </div>
+                <Header />
                 <div className="list-books-content">
                     <div>
                         <BookShelf
